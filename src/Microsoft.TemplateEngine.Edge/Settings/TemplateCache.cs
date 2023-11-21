@@ -157,16 +157,17 @@ namespace Microsoft.TemplateEngine.Edge.Settings
         /// <remarks>see https://source.dot.net/#System.Private.CoreLib/ResourceFallbackManager.cs.</remarks>
         private string? GetBestLocaleMatch(IEnumerable<string> availableLocalizations)
         {
-            CultureInfo currentCulture = CultureInfo.CurrentUICulture;
-            do
-            {
-                if (availableLocalizations.Contains(currentCulture.Name, StringComparer.OrdinalIgnoreCase))
-                {
-                    return currentCulture.Name;
-                }
-                currentCulture = currentCulture.Parent;
-            }
-            while (currentCulture.Name != CultureInfo.InvariantCulture.Name);
+            // Do not localize templates in Rider!
+            // CultureInfo currentCulture = CultureInfo.CurrentUICulture;
+            // do
+            // {
+            //     if (availableLocalizations.Contains(currentCulture.Name, StringComparer.OrdinalIgnoreCase))
+            //     {
+            //         return currentCulture.Name;
+            //     }
+            //     currentCulture = currentCulture.Parent;
+            // }
+            // while (currentCulture.Name != CultureInfo.InvariantCulture.Name);
             return null;
         }
 
