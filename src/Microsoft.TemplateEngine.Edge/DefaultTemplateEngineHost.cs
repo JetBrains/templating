@@ -24,8 +24,7 @@ namespace Microsoft.TemplateEngine.Edge
             string version,
             Dictionary<string, string>? defaults = null,
             IReadOnlyList<(Type InterfaceType, IIdentifiedComponent Instance)>? builtIns = null,
-            IReadOnlyList<string>? fallbackHostTemplateConfigNames = null,
-            ILoggerFactory? loggerFactory = null)
+            IReadOnlyList<string>? fallbackHostTemplateConfigNames = null)
         {
             HostIdentifier = hostIdentifier;
             Version = version;
@@ -34,8 +33,7 @@ namespace Microsoft.TemplateEngine.Edge
             _hostBuiltInComponents = builtIns ?? NoComponents;
             FallbackHostTemplateConfigNames = fallbackHostTemplateConfigNames ?? new List<string>();
 
-            loggerFactory ??= NullLoggerFactory.Instance;
-            _loggerFactory = loggerFactory;
+            _loggerFactory = NullLoggerFactory.Instance;
             _logger = _loggerFactory.CreateLogger("Template Engine") ?? NullLogger.Instance;
         }
 
